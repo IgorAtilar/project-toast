@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useContext,
 } from 'react';
-import useEscapeKey from '../../hooks/useEscapeKey/useEscapeKey';
+import useListenToKeyDown from '../../hooks/useListenToKeyDown';
 
 const INITIAL_CONTEXT_VALUE = {
   toasts: [],
@@ -47,7 +47,7 @@ function ToastProvider({ children }) {
     setToasts([]);
   }, []);
 
-  useEscapeKey(dismissAllToasts);
+  useListenToKeyDown('Escape', dismissAllToasts);
 
   const value = useMemo(
     () => ({
